@@ -1,0 +1,187 @@
+{
+  "jobs": [
+    {
+      "absolute_url": "https://job-boards.greenhouse.io/catawiki/jobs/8215843",
+      "data_compliance": [
+        {
+          "type": "gdpr",
+          "requires_consent": true,
+          "requires_processing_consent": true,
+          "requires_retention_consent": true,
+          "retention_period": 365,
+          "demographic_data_consent_applies": true
+        }
+      ],
+      "internal_job_id": 3538951,
+      "location": {
+        "name": "Amsterdam, Netherlands"
+      },
+      "metadata": [
+        {
+          "id": 1349263,
+          "name": "Time Type",
+          "value": "Full Time",
+          "value_type": "single_select"
+        },
+        {
+          "id": 1349264,
+          "name": "Earliest Hire Date",
+          "value": "",
+          "value_type": "date"
+        }
+      ],
+      "id": 8215843,
+      "updated_at": "2026-09-21T05:19:38-04:00",
+      "requisition_id": null,
+      "title": "Backend Engineer",
+      "company_name": "Catawiki",
+      "first_published": "2026-09-21T01:00:16-04:00",
+      "language": "en",
+      "application_deadline": "2026-10-16T13:00:00-04:00",
+      "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;At Catawiki, every day brings the extraordinary! Whether it’s &lt;a href=&quot;https://www.catawiki.com/en/c/583-sports-memorabilia&quot;&gt;Daniel Ricciardo’s Formula 1 Car&lt;/a&gt;, a &lt;a href=&quot;https://www.catawiki.com/en/c/579-fossils&quot;&gt;Woolly Mammoth’s Skeleton&lt;/a&gt;, &lt;a href=&quot;https://www.catawiki.com/en/l/10035805&quot;&gt;Lady Gaga&#39;s Jumpsuit&lt;/a&gt; or &lt;a href=&quot;https://www.catawiki.com/en/c/583-sports-memorabilia&quot;&gt;Usain Bolt’s running shoe&lt;/a&gt;, we encounter exceptional objects every day.&lt;/p&gt;\n&lt;p&gt;We’re a one-of-a-kind marketplace for buying and selling special objects. Each week, more than 100,000 unique items are auctioned, all carefully curated by our passionate in-house experts.&lt;/p&gt;\n&lt;p&gt;Having sold over 25 million unique objects, our mission is to become the world’s most popular destination for special objects. As a growing, diverse and sustainable scale-up, we proudly live by three core values. If these values resonate with you, we’d love to explore how you can join us.&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Taking ownership and driving impact&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Being open to change and feedback&lt;/li&gt;\n&lt;li&gt;Being passionate about our mission and our customers.&amp;nbsp;&lt;/li&gt;\n&lt;/ul&gt;&lt;/div&gt;&lt;h3&gt;&lt;strong&gt;Your Mission&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;On our path to becoming the most visited online curated marketplace for special objects, our Engineering team is on a mission to deliver the best experience across our platforms by building best-in-class products for search and discovery, bidding, curation, logistics, payments, and support.&lt;/p&gt;\n&lt;p&gt;We’re a scale-up tackling customer-facing challenges at high scale, with 75,000 auctions per week and more than 10 million visitors per month. As a&amp;nbsp;&lt;em&gt;Backend Engineer&lt;/em&gt;, you’ll support one of our three verticals - &lt;strong&gt;Demand&lt;/strong&gt;, &lt;strong&gt;Supply&lt;/strong&gt;, or &lt;strong&gt;Fulfilment&lt;/strong&gt; - improving and delivering product innovations for our platform.&lt;br&gt;Working in a small, fully autonomous, and highly collaborative Agile team, you will build scalable, maintainable, and resilient microservices and features. That’s why we’re looking for developers who share ideas, explore options, and communicate openly.&lt;/p&gt;\n&lt;h3&gt;&lt;strong&gt;What You&#39;ll Do&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;You’ll be part of a team with end-to-end responsibility for its own microservices, collaborating across disciplines to build, operate, and continuously improve our products.&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Build end-to-end&lt;/strong&gt; by designing, developing, testing, deploying, maintaining, and improving scalable microservices and features.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Own what you deliver&lt;/strong&gt;, taking responsibility for the quality, resilience, and maintainability of your team’s services throughout their lifecycle.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Collaborate across disciplines&lt;/strong&gt; while closely working with product designers, product owners, and frontend, backend, and mobile engineers to share ideas and deliver product innovations.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Improve how we work&lt;/strong&gt;, identifying opportunities to make our engineering processes more effective and efficient.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Strengthen our engineering culture&lt;/strong&gt; by documenting and advocating for development best practices across the team.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Raise product quality&lt;/strong&gt; by fixing bugs and refactoring the codebase where necessary to keep our products reliable and maintainable.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Learn and experiment&lt;/strong&gt; by testing new technologies and participating in Technical Week - a week dedicated to creativity, innovation, and knowledge sharing across domains after every two product sprints.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;&lt;strong&gt;What You&#39;ll Bring&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;You understand the full lifecycle of web development, identify opportunities, explore solutions, and keep customer needs at the center of your work. Our stack is mainly focused on Ruby; however, prior Ruby experience is not essential if you’re passionate about learning new things.&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Strong software engineering foundations&lt;/span&gt;: 7+ years of software development experience, specifically with object-oriented programming.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Relevant product experience&lt;/span&gt;: 3+ years of experience working with customer-facing products in industries such as e-commerce, fintech, or SaaS.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Backend service expertise&lt;/span&gt;: Experience designing, implementing, and deploying backend services with a focus on high availability, low latency, and consistency.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;API and data knowledge&lt;/span&gt;: A good understanding of API design, SQL, and relational databases.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Clear communication&lt;/span&gt;: Excellent English communication skills and comfort raising concerns, sharing ideas, and documenting your work.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Collaborative mindset&lt;/span&gt;: You contribute to the team, take initiative, and step in to help when needed.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Solution-oriented thinking&lt;/span&gt;: You actively identify opportunities and explore alternative approaches to solving problems.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Commitment to growth&lt;/span&gt;: You take ownership of developing your skills by learning new technologies and seeking new opportunities.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;&lt;strong&gt;How We Work&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;Our engineers work in small, fully autonomous, and highly collaborative Agile teams aligned with one of three verticals: Demand, Supply, or Fulfilment.&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Teams are responsible for their own microservices from design and development through deployment, maintenance, and improvement.&lt;/li&gt;\n&lt;li&gt;Engineers collaborate closely with product designers, product owners, and frontend, backend, and mobile colleagues.&lt;/li&gt;\n&lt;li&gt;We value bold thinking, curiosity, openness, initiative, and a strong customer focus.&lt;/li&gt;\n&lt;li&gt;Technical Week creates dedicated space for experimentation, creativity, innovation, and knowledge sharing across domains.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;Where You&#39;ll Be&lt;/h3&gt;\n&lt;p&gt;This is a &lt;em&gt;Hybrid&lt;/em&gt; role based in Amsterdam. &lt;strong&gt;You will work from our &lt;span style=&quot;text-decoration: underline;&quot;&gt;Amsterdam HQ&lt;/span&gt; a minimum of 2 days per week.&lt;/strong&gt;&lt;br&gt;At this time, we are only considering candidates who are already based in&lt;strong&gt; &lt;/strong&gt;the &lt;strong&gt;Netherlands&lt;/strong&gt;. As a result, &lt;span style=&quot;text-decoration: underline;&quot;&gt;visa sponsorship and relocation support are not available for this position&lt;/span&gt;.&lt;/p&gt;\n&lt;h3&gt;In Return&lt;/h3&gt;\n&lt;p&gt;You’ll be part of an enthusiastic, highly motivated team of &lt;strong&gt;800+ Catawikians.&lt;/strong&gt;&lt;/p&gt;\n&lt;ul&gt;\n&lt;li value=&quot;1&quot;&gt;A competitive &lt;u&gt;Annual Gross Base Salary&lt;/u&gt; depending on your level, competencies, and overall experience.&lt;/li&gt;\n&lt;li value=&quot;2&quot;&gt;A &lt;u&gt;Work From Home Allowance&lt;/u&gt; to help with your monthly household bills.&lt;/li&gt;\n&lt;li value=&quot;3&quot;&gt;&lt;u&gt;Commuting&lt;/u&gt; between your home and our office is covered by Catawiki.&lt;/li&gt;\n&lt;li value=&quot;4&quot;&gt;Amazing &lt;u&gt;Office&lt;/u&gt; right in the centre of Amsterdam.&lt;/li&gt;\n&lt;/ul&gt;&lt;div class=&quot;content-conclusion&quot;&gt;&lt;div class=&quot;text text-align-left &quot;&gt;\n&lt;h3&gt;&lt;strong&gt;Why You&#39;ll Love Working with Us&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Create a visible impact &lt;/strong&gt;by working at scale in a global organisation serving millions of customers across 80+ categories. In our flat structure, every role has a broad scope and directly impacts both our customers and the business.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Learn and grow&lt;/strong&gt; through our Learning &amp;amp; Development initiatives, including clear development plans and mentorship programmes to support your career progression.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;A culture of connection defines us&lt;/strong&gt;. We’re a passionate, diverse team of 800+ Catawikians representing 60+ nationalities. We foster an inclusive and queer-friendly environment where everyone is encouraged to bring their full self to work.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Celebrate life’s moments with us. &lt;/strong&gt;You’ll receive a €100 Catavoucher when you join, a €50 Catavoucher on your birthday, and an extra day off each year to “Pursue Your Passion&lt;strong&gt;”&lt;/strong&gt;. We also offer additional leave for key work anniversaries and important life events. Benefits may vary by location.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;&lt;strong&gt;Our Offices and Way of Working&lt;/strong&gt;&lt;/h3&gt;\n&lt;p class=&quot;p1&quot;&gt;Our vibrant offices in Amsterdam and Lisbon are designed to inspire collaboration. Most Catawikians operate in a hybrid setup, combining office-based and remote work, with a minimum of two days per week in the office, unless a role is explicitly stated as fully remote or fully office-based.&lt;/p&gt;\n&lt;/div&gt;\n&lt;h3&gt;&lt;strong&gt;Interested?&lt;/strong&gt;&lt;/h3&gt;\n&lt;p class=&quot;p1&quot;&gt;Apply with an English CV and Cover Letter. By applying, you agree to &lt;a href=&quot;https://www.catawiki.com/conditions/applicant-privacy-policy.pdf&quot;&gt;Catawiki’s Applicant Privacy Policy.&lt;/a&gt; If you’re excited about this role but don’t meet every requirement, we still encourage you to apply anyway. You may be just the right candidate for this or other roles.&lt;/p&gt;&lt;/div&gt;",
+      "departments": [
+        {
+          "id": 8935,
+          "name": "Engineering",
+          "child_ids": [],
+          "parent_id": null
+        }
+      ],
+      "offices": [
+        {
+          "id": 6007,
+          "name": "Netherlands",
+          "location": "Netherlands",
+          "child_ids": [],
+          "parent_id": null
+        }
+      ],
+      "ai_disclaimer": null,
+      "include_ai_disclaimer": null,
+      "ai_opt_out_request_url": "http://app.greenhouse.io/ai_opt_out_request/job_post/8215843/ai_opt_out"
+    },
+    {
+      "absolute_url": "https://job-boards.greenhouse.io/catawiki/jobs/8215852",
+      "data_compliance": [
+        {
+          "type": "gdpr",
+          "requires_consent": true,
+          "requires_processing_consent": true,
+          "requires_retention_consent": true,
+          "retention_period": 365,
+          "demographic_data_consent_applies": true
+        }
+      ],
+      "internal_job_id": 3210376,
+      "location": {
+        "name": "Lisbon, Portugal"
+      },
+      "metadata": [
+        {
+          "id": 1349263,
+          "name": "Time Type",
+          "value": "Full Time",
+          "value_type": "single_select"
+        },
+        {
+          "id": 1349264,
+          "name": "Earliest Hire Date",
+          "value": "",
+          "value_type": "date"
+        }
+      ],
+      "id": 8215852,
+      "updated_at": "2026-09-21T05:19:38-04:00",
+      "requisition_id": null,
+      "title": "Backend Engineer",
+      "company_name": "Catawiki",
+      "first_published": "2026-09-21T01:00:16-04:00",
+      "language": "en",
+      "application_deadline": "2026-10-16T13:00:00-04:00",
+      "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;At Catawiki, every day brings the extraordinary! Whether it’s &lt;a href=&quot;https://www.catawiki.com/en/c/583-sports-memorabilia&quot;&gt;Daniel Ricciardo’s Formula 1 Car&lt;/a&gt;, a &lt;a href=&quot;https://www.catawiki.com/en/c/579-fossils&quot;&gt;Woolly Mammoth’s Skeleton&lt;/a&gt;, &lt;a href=&quot;https://www.catawiki.com/en/l/10035805&quot;&gt;Lady Gaga&#39;s Jumpsuit&lt;/a&gt; or &lt;a href=&quot;https://www.catawiki.com/en/c/583-sports-memorabilia&quot;&gt;Usain Bolt’s running shoe&lt;/a&gt;, we encounter exceptional objects every day.&lt;/p&gt;\n&lt;p&gt;We’re a one-of-a-kind marketplace for buying and selling special objects. Each week, more than 100,000 unique items are auctioned, all carefully curated by our passionate in-house experts.&lt;/p&gt;\n&lt;p&gt;Having sold over 25 million unique objects, our mission is to become the world’s most popular destination for special objects. As a growing, diverse and sustainable scale-up, we proudly live by three core values. If these values resonate with you, we’d love to explore how you can join us.&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Taking ownership and driving impact&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Being open to change and feedback&lt;/li&gt;\n&lt;li&gt;Being passionate about our mission and our customers.&amp;nbsp;&lt;/li&gt;\n&lt;/ul&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Important Notice&lt;/span&gt;: &lt;/strong&gt;While we don&#39;t currently have an immediate opening for a &lt;em&gt;Backend Engineer&lt;/em&gt; in Portugal, we&#39;re proactively building a talent pipeline for future opportunities. If your profile aligns with what we&#39;re looking for, we&#39;d love to consider you as new positions become available.&lt;br&gt;&lt;strong&gt;&lt;br&gt;Your Mission&lt;/strong&gt;&lt;/p&gt;\n&lt;p&gt;On our path to becoming the most visited online curated marketplace for special objects, our Engineering team is on a mission to deliver the best experience across our platforms by building best-in-class products for search and discovery, bidding, curation, logistics, payments, and support.&lt;/p&gt;\n&lt;p&gt;We’re a scale-up tackling customer-facing challenges at high scale, with 75,000 auctions per week and more than 10 million visitors per month. As a&amp;nbsp;&lt;em&gt;Backend Engineer&lt;/em&gt;, you’ll support one of our three verticals - &lt;strong&gt;Demand&lt;/strong&gt;, &lt;strong&gt;Supply&lt;/strong&gt;, or &lt;strong&gt;Fulfilment&lt;/strong&gt; - improving and delivering product innovations for our platform.&lt;br&gt;Working in a small, fully autonomous, and highly collaborative Agile team, you will build scalable, maintainable, and resilient microservices and features. That’s why we’re looking for developers who share ideas, explore options, and communicate openly.&lt;/p&gt;\n&lt;h3&gt;&lt;strong&gt;What You&#39;ll Do&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;You’ll be part of a team with end-to-end responsibility for its own microservices, collaborating across disciplines to build, operate, and continuously improve our products.&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Build end-to-end&lt;/strong&gt; by designing, developing, testing, deploying, maintaining, and improving scalable microservices and features.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Own what you deliver&lt;/strong&gt;, taking responsibility for the quality, resilience, and maintainability of your team’s services throughout their lifecycle.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Collaborate across disciplines&lt;/strong&gt; while closely working with product designers, product owners, and frontend, backend, and mobile engineers to share ideas and deliver product innovations.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Improve how we work&lt;/strong&gt;, identifying opportunities to make our engineering processes more effective and efficient.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Strengthen our engineering culture&lt;/strong&gt; by documenting and advocating for development best practices across the team.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Raise product quality&lt;/strong&gt; by fixing bugs and refactoring the codebase where necessary to keep our products reliable and maintainable.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Learn and experiment&lt;/strong&gt; by testing new technologies and participating in Technical Week - a week dedicated to creativity, innovation, and knowledge sharing across domains after every two product sprints.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;&lt;strong&gt;What You&#39;ll Bring&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;You understand the full lifecycle of web development, identify opportunities, explore solutions, and keep customer needs at the center of your work. Our stack is mainly focused on Ruby; however, prior Ruby experience is not essential if you’re passionate about learning new things.&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Strong software engineering foundations&lt;/span&gt;: 7+ years of software development experience, specifically with object-oriented programming.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Relevant product experience&lt;/span&gt;: 3+ years of experience working with customer-facing products in industries such as e-commerce, fintech, or SaaS.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Backend service expertise&lt;/span&gt;: Experience designing, implementing, and deploying backend services with a focus on high availability, low latency, and consistency.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;API and data knowledge&lt;/span&gt;: A good understanding of API design, SQL, and relational databases.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Clear communication&lt;/span&gt;: Excellent English communication skills and comfort raising concerns, sharing ideas, and documenting your work.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Collaborative mindset&lt;/span&gt;: You contribute to the team, take initiative, and step in to help when needed.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Solution-oriented thinking&lt;/span&gt;: You actively identify opportunities and explore alternative approaches to solving problems.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Commitment to growth&lt;/span&gt;: You take ownership of developing your skills by learning new technologies and seeking new opportunities.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;&lt;strong&gt;How We Work&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;Our engineers work in small, fully autonomous, and highly collaborative Agile teams aligned with one of three verticals: Demand, Supply, or Fulfilment.&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Teams are responsible for their own microservices from design and development through deployment, maintenance, and improvement.&lt;/li&gt;\n&lt;li&gt;Engineers collaborate closely with product designers, product owners, and frontend, backend, and mobile colleagues.&lt;/li&gt;\n&lt;li&gt;We value bold thinking, curiosity, openness, initiative, and a strong customer focus.&lt;/li&gt;\n&lt;li&gt;Technical Week creates dedicated space for experimentation, creativity, innovation, and knowledge sharing across domains.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;&lt;strong&gt;Where You&#39;ll Be&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;This is a &lt;em&gt;Hybrid&lt;/em&gt; role based in Lisbon. &lt;strong&gt;You will work from our &lt;/strong&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;&lt;strong&gt;Lisbon Hub&lt;/strong&gt;&lt;/span&gt;&lt;strong&gt; a minimum of 2 days per week.&lt;/strong&gt;&lt;br&gt;At this time, we are only considering candidates who are already based in&amp;nbsp;&lt;strong&gt;Portugal&lt;/strong&gt;. As a result, &lt;span style=&quot;text-decoration: underline;&quot;&gt;visa sponsorship and relocation support are not available for this position&lt;/span&gt;.&lt;/p&gt;\n&lt;h3&gt;&lt;strong&gt;In Return&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;You’ll be part of an enthusiastic, highly motivated team of &lt;strong&gt;800+ Catawikians.&lt;/strong&gt;&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;A competitive &lt;span style=&quot;text-decoration: underline;&quot;&gt;Annual Gross Base Salary&lt;/span&gt; depending on your level, competencies, and overall experience.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Meal Allowance Card&lt;/span&gt; stipend per working day, in addition to salary.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Health Insurance&lt;/span&gt; from day 1 (including dental coverage), with access to multiple hospitals and clinics and a vast wellness network.&lt;/li&gt;\n&lt;li&gt;A &lt;span style=&quot;text-decoration: underline;&quot;&gt;Work From Home Allowance&lt;/span&gt; to help with your monthly household bills.&lt;/li&gt;\n&lt;li&gt;&lt;span style=&quot;text-decoration: underline;&quot;&gt;Commuting&lt;/span&gt; between your home and our office is covered by Catawiki.&lt;/li&gt;\n&lt;li&gt;Amazing &lt;span style=&quot;text-decoration: underline;&quot;&gt;Office&lt;/span&gt; right in the centre of Lisbon.&lt;/li&gt;\n&lt;/ul&gt;&lt;div class=&quot;content-conclusion&quot;&gt;&lt;div class=&quot;text text-align-left &quot;&gt;\n&lt;h3&gt;&lt;strong&gt;Why You&#39;ll Love Working with Us&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Create a visible impact &lt;/strong&gt;by working at scale in a global organisation serving millions of customers across 80+ categories. In our flat structure, every role has a broad scope and directly impacts both our customers and the business.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Learn and grow&lt;/strong&gt; through our Learning &amp;amp; Development initiatives, including clear development plans and mentorship programmes to support your career progression.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;A culture of connection defines us&lt;/strong&gt;. We’re a passionate, diverse team of 800+ Catawikians representing 60+ nationalities. We foster an inclusive and queer-friendly environment where everyone is encouraged to bring their full self to work.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Celebrate life’s moments with us. &lt;/strong&gt;You’ll receive a €100 Catavoucher when you join, a €50 Catavoucher on your birthday, and an extra day off each year to “Pursue Your Passion&lt;strong&gt;”&lt;/strong&gt;. We also offer additional leave for key work anniversaries and important life events. Benefits may vary by location.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;&lt;strong&gt;Our Offices and Way of Working&lt;/strong&gt;&lt;/h3&gt;\n&lt;p class=&quot;p1&quot;&gt;Our vibrant offices in Amsterdam and Lisbon are designed to inspire collaboration. Most Catawikians operate in a hybrid setup, combining office-based and remote work, with a minimum of two days per week in the office, unless a role is explicitly stated as fully remote or fully office-based.&lt;/p&gt;\n&lt;/div&gt;\n&lt;h3&gt;&lt;strong&gt;Interested?&lt;/strong&gt;&lt;/h3&gt;\n&lt;p class=&quot;p1&quot;&gt;Apply with an English CV and Cover Letter. By applying, you agree to &lt;a href=&quot;https://www.catawiki.com/conditions/applicant-privacy-policy.pdf&quot;&gt;Catawiki’s Applicant Privacy Policy.&lt;/a&gt; If you’re excited about this role but don’t meet every requirement, we still encourage you to apply anyway. You may be just the right candidate for this or other roles.&lt;/p&gt;&lt;/div&gt;",
+      "departments": [
+        {
+          "id": 8935,
+          "name": "Engineering",
+          "child_ids": [],
+          "parent_id": null
+        }
+      ],
+      "offices": [
+        {
+          "id": 11807,
+          "name": "Portugal",
+          "location": "Portugal",
+          "child_ids": [],
+          "parent_id": null
+        }
+      ],
+      "ai_disclaimer": null,
+      "include_ai_disclaimer": null,
+      "ai_opt_out_request_url": "http://app.greenhouse.io/ai_opt_out_request/job_post/8215852/ai_opt_out"
+    },
+    {
+      "absolute_url": "https://job-boards.greenhouse.io/catawiki/jobs/8184728",
+      "data_compliance": [
+        {
+          "type": "gdpr",
+          "requires_consent": true,
+          "requires_processing_consent": true,
+          "requires_retention_consent": true,
+          "retention_period": 365,
+          "demographic_data_consent_applies": true
+        }
+      ],
+      "internal_job_id": 3541821,
+      "location": {
+        "name": "Netherlands"
+      },
+      "metadata": [
+        {
+          "id": 1349263,
+          "name": "Time Type",
+          "value": "Full Time",
+          "value_type": "single_select"
+        },
+        {
+          "id": 1349264,
+          "name": "Earliest Hire Date",
+          "value": "2026-09-17",
+          "value_type": "date"
+        }
+      ],
+      "id": 8184728,
+      "updated_at": "2026-09-21T05:19:38-04:00",
+      "requisition_id": "P-3180417073",
+      "title": "Campaigns & Activations Specialist - Category Marketing",
+      "company_name": "Catawiki",
+      "first_published": "2026-09-11T10:07:36-04:00",
+      "language": "en",
+      "application_deadline": null,
+      "content": "&lt;div class=&quot;content-intro&quot;&gt;&lt;p&gt;At Catawiki, every day brings the extraordinary! Whether it’s &lt;a href=&quot;https://www.catawiki.com/en/c/583-sports-memorabilia&quot;&gt;Daniel Ricciardo’s Formula 1 Car&lt;/a&gt;, a &lt;a href=&quot;https://www.catawiki.com/en/c/579-fossils&quot;&gt;Woolly Mammoth’s Skeleton&lt;/a&gt;, &lt;a href=&quot;https://www.catawiki.com/en/l/10035805&quot;&gt;Lady Gaga&#39;s Jumpsuit&lt;/a&gt; or &lt;a href=&quot;https://www.catawiki.com/en/c/583-sports-memorabilia&quot;&gt;Usain Bolt’s running shoe&lt;/a&gt;, we encounter exceptional objects every day.&lt;/p&gt;\n&lt;p&gt;We’re a one-of-a-kind marketplace for buying and selling special objects. Each week, more than 100,000 unique items are auctioned, all carefully curated by our passionate in-house experts.&lt;/p&gt;\n&lt;p&gt;Having sold over 25 million unique objects, our mission is to become the world’s most popular destination for special objects. As a growing, diverse and sustainable scale-up, we proudly live by three core values. If these values resonate with you, we’d love to explore how you can join us.&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Taking ownership and driving impact&amp;nbsp;&lt;/li&gt;\n&lt;li&gt;Being open to change and feedback&lt;/li&gt;\n&lt;li&gt;Being passionate about our mission and our customers.&amp;nbsp;&lt;/li&gt;\n&lt;/ul&gt;&lt;/div&gt;&lt;h3&gt;&lt;strong&gt;What You Will Do&lt;/strong&gt;&lt;/h3&gt;\n&lt;p&gt;As a Campaigns &amp;amp; Activations Specialist, you will own development and delivery of campaigns that engage our buyers and sellers, create demand and support Catawiki’s wider marketing and business priorities. You will take campaigns from idea to evaluation, working closely with the Campaign &amp;amp; Activations Manager and cross-functional teams to turn opportunities into high-impact customer moments.&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Own end-to-end campaigns:&lt;/strong&gt; Develop, plan, launch and evaluate campaigns and activations across the Catawiki marketplace, from recurring moments such as No Reserve Days to new initiatives.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Bring fresh ideas to the table:&lt;/strong&gt; Monitor market trends, cultural moments, category developments and competitor activity to identify new formats, themes and opportunities worth testing.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Measure, optimise and scale:&lt;/strong&gt; Define success metrics, monitor performance and turn results into clear learnings and recommendations. Use these insights to improve future activations and scale the formats that deliver the strongest business impact.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Shape integrated campaign plans: &lt;/strong&gt;Partner with CRM, Creative, Merchandising, PR, Paid Media and other channel teams to build cohesive customer journeys and ensure the right message reaches the right audience.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Drive cross-functional delivery: &lt;/strong&gt;Bring stakeholders together around clear objectives, timelines and responsibilities. Keep campaigns moving, resolve day-to-day blockers and ensure teams are aligned throughout delivery.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Improve how we work:&lt;/strong&gt; Help strengthen campaign planning, briefing, reporting and retrospective processes, making each campaign more effective than the last.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;&lt;strong&gt;Who You Are&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;A campaign owner and strong executor:&lt;/strong&gt; You enjoy taking an opportunity or a rough idea and turning it into a well-structured campaign from concept to launch that delivers results.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Commercially minded and customer-focused:&lt;/strong&gt; You can identify opportunities that create value for both the business and our buyers and sellers, and translate them into strong activation plans.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Insight-led and data driven: &lt;/strong&gt;You are comfortable using data and customer insights to inform decisions, assess performance and make a clear recommendation on what to do next.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Channel-savvy:&lt;/strong&gt; You understand how different marketing channels work together, from CRM and onsite to social, paid media and PR, and can shape an integrated campaign plan.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Collaborative and proactive:&lt;/strong&gt; You work effectively across teams, communicate clearly and enjoy working in close partnership with others to move work forward in a fast-paced environment.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Experienced in marketing: &lt;/strong&gt;You have 3–5 years’ experience in campaign, growth, brand or (digital) marketing, ideally in a fast-paced and cross-functional environment.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;An early AI adopter:&lt;/strong&gt; You already use AI tools in your daily work to move faster, think broader and improve the quality of your output. You are eager to learn, automate and develop new ways of working through AI.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;&lt;strong&gt;Where you’ll be and what we offer &lt;/strong&gt;&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;This role is based in Amsterdam, the Netherlands, with a fixed 2 days per week in office under our hybrid working model.&lt;/p&gt;&lt;div class=&quot;content-conclusion&quot;&gt;&lt;div class=&quot;text text-align-left &quot;&gt;\n&lt;h3&gt;&lt;strong&gt;Why You&#39;ll Love Working with Us&lt;/strong&gt;&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;&lt;strong&gt;Create a visible impact &lt;/strong&gt;by working at scale in a global organisation serving millions of customers across 80+ categories. In our flat structure, every role has a broad scope and directly impacts both our customers and the business.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Learn and grow&lt;/strong&gt; through our Learning &amp;amp; Development initiatives, including clear development plans and mentorship programmes to support your career progression.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;A culture of connection defines us&lt;/strong&gt;. We’re a passionate, diverse team of 800+ Catawikians representing 60+ nationalities. We foster an inclusive and queer-friendly environment where everyone is encouraged to bring their full self to work.&lt;/li&gt;\n&lt;li&gt;&lt;strong&gt;Celebrate life’s moments with us. &lt;/strong&gt;You’ll receive a €100 Catavoucher when you join, a €50 Catavoucher on your birthday, and an extra day off each year to “Pursue Your Passion&lt;strong&gt;”&lt;/strong&gt;. We also offer additional leave for key work anniversaries and important life events. Benefits may vary by location.&lt;/li&gt;\n&lt;/ul&gt;\n&lt;h3&gt;&lt;strong&gt;Our Offices and Way of Working&lt;/strong&gt;&lt;/h3&gt;\n&lt;p class=&quot;p1&quot;&gt;Our vibrant offices in Amsterdam and Lisbon are designed to inspire collaboration. Most Catawikians operate in a hybrid setup, combining office-based and remote work, with a minimum of two days per week in the office, unless a role is explicitly stated as fully remote or fully office-based.&lt;/p&gt;\n&lt;/div&gt;\n&lt;h3&gt;&lt;strong&gt;Interested?&lt;/strong&gt;&lt;/h3&gt;\n&lt;p class=&quot;p1&quot;&gt;Apply with an English CV and Cover Letter. By applying, you agree to &lt;a href=&quot;https://www.catawiki.com/conditions/applicant-privacy-policy.pdf&quot;&gt;Catawiki’s Applicant Privacy Policy.&lt;/a&gt; If you’re excited about this role but don’t meet every requirement, we still encourage you to apply anyway. You may be just the right candidate for this or other roles.&lt;/p&gt;&lt;/div&gt;",
+      "departments": [
+        {
+          "id": 8936,
+          "name": "Marketing",
+          "child_ids": [],
+          "parent_id": null
+        }
+      ],
+      "offices": [
+        {
+          "id": 6007,
+          "name": "Netherlands",
+          "location": "Netherlands",
+          "child_ids": [],
+          "parent_id": null
+        }
+      ],
+      "ai_disclaimer": null,
+      "include_ai_disclaimer": null,
+      "ai_opt_out_request_url": "http://app.greenhouse.io/ai_opt_out_request/job_post/8184728/ai_opt_out"
+    }
+  ],
+  "meta": {
+    "total": 3
+  }
+}

@@ -15,14 +15,14 @@ make up                # Postgres on 127.0.0.1:5433
 make migrate           # create the raw schema
 make check             # lint + tests
 
-uv run --env-file .env python -m nl_jobs ingest greenhouse catawiki bird
+uv run --env-file .env python -m nl_jobs ingest greenhouse   # boards from dbt/seeds/companies.csv
 ```
 
 `make psql` opens a shell on the database. `make db-reset` deletes the local volume.
 
 ## Known limitations
 
-- Work in progress: only Greenhouse ingestion into the raw layer exists so far. No seed list, dbt models or scheduling yet.
-- Only companies in the seed list are collected. Postings on job boards or company career pages outside the six supported ATS platforms are not.
+- Work in progress: only Greenhouse ingestion into the raw layer exists so far. No dbt models or scheduling yet.
+- Only the 13 companies in `dbt/seeds/companies.csv` are collected. Postings on job boards or company career pages outside the six supported ATS platforms are not.
 
 Design and decisions: [docs/architecture.md](docs/architecture.md).

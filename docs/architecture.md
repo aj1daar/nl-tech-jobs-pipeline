@@ -64,6 +64,37 @@ consume sequence numbers. Gaps are expected and carry no meaning.
 | Greenhouse | done | `?content=true`, 404 for unknown slugs |
 | iwwz sponsor export | contract fixed, key not issued | `GET /api/export/sponsors`, `X-Api-Key`, brotli, schemaVersion 1. Field list: iwwz repo `docs/ARCHITECTURE.md`, section "Sponsor export contract". |
 
+## Seed list
+
+`dbt/seeds/companies.csv` is the single list of boards to fetch. The CLI reads it
+(`ingest <source>` with no slugs fetches every active board of that source) and dbt loads
+it as a seed, so both sides use the same companies. Validation lives in
+`src/nl_jobs/seed.py` and fails on the first run with every problem listed.
+
+| Column | Meaning |
+|---|---|
+| `company_id` | Stable key used everywhere downstream. Never reuse or rename. |
+| `ats`, `ats_slug` | Which board to fetch. One row per board. |
+| `kvk_number` | Join key for the sponsor register. Blank means unknown (null), filled in by hand. Must stay text in dbt (`column_types`) or leading zeros are lost. |
+| `active` | `false` stops fetching without deleting the company, so its history stays joinable. |
+| `checked_on`, `notes` | When and how the board was last confirmed. |
+
+Companies are added only after their board API returned postings with Dutch locations.
+Checked on 2026-09-25 by calling each ATS API for about 30 candidate companies.
+
+### ATS behaviour found while building the seed
+
+| ATS | Unknown slug returns | Consequence |
+|---|---|---|
+| Greenhouse | 404 | `not_found` works. |
+| Lever | 404 `{"ok": false, "error": "Document not found"}`; success is a top-level JSON array | `not_found` works; the shape check differs from Greenhouse. |
+| SmartRecruiters | **200 with an empty list, for any slug** | An unknown slug is indistinguishable from an empty board. Its client must check that the company exists before reporting `empty`, or `empty` loses its meaning. |
+| Workable | 200 with an account name and zero jobs for many real accounts | Harmless, but none of the candidates had open postings there. |
+
+None of the candidates has a Lever board, so the Lever client needs Dutch Lever
+companies found first. Bird (Greenhouse `bird`) was left out: its board lists no Dutch
+locations anymore.
+
 ## Decisions log
 
 | Date | Decision | Reason |
@@ -79,3 +110,4 @@ consume sequence numbers. Gaps are expected and carry no meaning.
 | 2026-09-25 | Migrations moved from `sql/migrations/` into the package | Airflow or cron runs an installed package, not a checkout; the SQL must travel with it. |
 | 2026-09-25 | Local DB host is 127.0.0.1, not localhost | On Windows, localhost resolves to ::1 first and Docker only listens on IPv4, so connects hung. Connections now also time out after 10 s. |
 | 2026-09-25 | Scheduler-agnostic CLI; Airflow optional | Host is undecided and the candidate box (2 vCPU, 3.7 GB, already running the API and Postgres) may not fit Airflow. Checkpoint 5 ships both a DAG and a cron entrypoint that call the same commands. |
+| 2026-09-25 | Seed is a dbt seed CSV that the CLI also reads | One list for ingestion and joins; dbt can test it. The CLI resolves it relative to the working directory, so deployments run from the repo root. |

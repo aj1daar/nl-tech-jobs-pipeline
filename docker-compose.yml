@@ -2,7 +2,7 @@ name: nl-jobs
 
 services:
   postgres:
-    image: postgres:16
+    image: postgres:18
     environment:
       POSTGRES_DB: ${POSTGRES_DB:-nl_jobs}
       POSTGRES_USER: ${POSTGRES_USER:-nl_jobs}
@@ -11,7 +11,8 @@ services:
       # 5432 on the host is taken by another project; bind to localhost only.
       - "127.0.0.1:${POSTGRES_PORT:-5433}:5432"
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      # Postgres 18 images keep data in a versioned subfolder, so mount the parent.
+      - pgdata:/var/lib/postgresql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 5s

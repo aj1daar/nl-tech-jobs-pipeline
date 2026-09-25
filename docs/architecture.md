@@ -34,5 +34,6 @@ Airflow runs the whole chain once a day.
 |---|---|---|
 | 2026-09-23 | uv for Python version, venv and lockfile | Installs 3.12 next to the system 3.14; `uv.lock` gives identical installs locally, in CI and on the VPS. |
 | 2026-09-23 | Makefile for task running | Standard in data repos, works unchanged on Linux VPS and CI. Recipes stay single commands so they also run under cmd.exe. |
-| 2026-09-23 | Local Postgres 16 on host port 5433 | Matches the existing project's version; 5432 is already in use. Bound to 127.0.0.1 only. |
+| 2026-09-23 | Local Postgres on host port 5433 | 5432 is already in use by another local project. Bound to 127.0.0.1 only. |
+| 2026-09-25 | Local Postgres 18, not 16 | Production (iwwz VPS) runs Postgres 18.6. The earlier choice of 16 copied a local container of another project instead of production. |
 | 2026-09-23 | LF line endings via `.gitattributes` | Files are copied into Linux containers, where CRLF breaks shell scripts. |

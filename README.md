@@ -20,9 +20,23 @@ uv run --env-file .env python -m nl_jobs ingest greenhouse   # boards from dbt/s
 
 `make psql` opens a shell on the database. `make db-reset` deletes the local volume.
 
+## Sponsor register (iwwz)
+
+The IND register of recognised sponsors comes from the ik-wil-werk-zoeken API
+(`GET /api/export/sponsors`), not from this repo. It needs an API key, which is never
+written to a file here. For a one-off run, export it in your shell first:
+
+```sh
+export IWWZ_API_KEY=...          # PowerShell: $env:IWWZ_API_KEY = '...'
+make sponsors
+```
+
+Leave `IWWZ_API_KEY=` empty in `.env`. In production the scheduler supplies it.
+
 ## Known limitations
 
-- Work in progress: only Greenhouse ingestion into the raw layer exists so far. No dbt models or scheduling yet.
+- Work in progress: Greenhouse and the sponsor export land in the raw layer. No dbt models or scheduling yet.
+- The sponsor client has not run against the live API yet, and its recorded test fixture is still missing.
 - Only the 13 companies in `dbt/seeds/companies.csv` are collected. Postings on job boards or company career pages outside the six supported ATS platforms are not.
 
 Design and decisions: [docs/architecture.md](docs/architecture.md).

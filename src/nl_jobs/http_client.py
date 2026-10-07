@@ -25,25 +25,32 @@ def get_with_retries(
     url: str,
     *,
     params: dict[str, str] | None = None,
+    headers: dict[str, str] | None = None,
+    timeout: httpx.Timeout | None = None,
+    retry_statuses: frozenset[int] = RETRY_STATUSES,
     attempts: int = 3,
     backoff_seconds: float = 1.0,
     sleep: Callable[[float], None] = time.sleep,
 ) -> httpx.Response:
-    """GET with retries on transport errors and RETRY_STATUSES.
+    """GET with retries on transport errors and retry_statuses.
 
     Returns the last response, which may still be an error status.
     Raises httpx.TransportError only if the final attempt never got a response.
     """
+    # httpx reads timeout=None as "no timeout at all", so only pass it when it is set.
+    request_kwargs: dict[str, Any] = {"params": params, "headers": headers}
+    if timeout is not None:
+        request_kwargs["timeout"] = timeout
     for attempt in range(1, attempts + 1):
         delay = backoff_seconds * 2 ** (attempt - 1)
         try:
-            response = client.get(url, params=params)
+            response = client.get(url, **request_kwargs)
         except httpx.TransportError:
             if attempt == attempts:
                 raise
             sleep(delay)
             continue
-        if response.status_code not in RETRY_STATUSES or attempt == attempts:
+        if response.status_code not in retry_statuses or attempt == attempts:
             return response
         sleep(retry_after_seconds(response) or delay)
     raise AssertionError("unreachable: the loop always returns or raises")

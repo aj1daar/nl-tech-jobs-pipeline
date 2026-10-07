@@ -4,7 +4,7 @@
 
 ```
 ATS JSON APIs        ->  python -m nl_jobs ingest  ->  raw.board_fetches (append-only JSON)
-iwwz sponsor export  ->  (planned) sponsor client ->  raw layer
+iwwz sponsor export  ->  python -m nl_jobs ingest-sponsors  ->  raw.sponsor_export_fetches + raw.sponsor_export_rows
 raw  ->  dbt staging -> intermediate -> marts (postings joined with sponsors)
 ```
 
@@ -57,12 +57,56 @@ clock. That is what makes backfills land on the right day.
 Identity values in `fetch_id` can have gaps: rolled-back inserts (tests, crashes) still
 consume sequence numbers. Gaps are expected and carry no meaning.
 
+### Sponsor export
+
+The iwwz export lands in two append-only tables.
+
+- `raw.sponsor_export_fetches`: one row per attempt, whatever happened. Outcomes are kept
+  apart because each needs a different reaction: `ok`, `empty`, `unreachable`,
+  `unauthorized` (401), `rate_limited` (429), `server_error` (5xx after retries),
+  `unexpected_status`, `invalid_json`, `unsupported_schema_version`, `invalid_envelope`,
+  `count_mismatch`.
+- `raw.sponsor_export_rows`: one row per sponsor per accepted export, with the sponsor
+  object stored as sent in `payload` (jsonb), plus `generated_at`, `schema_version` and
+  `ingested_at`. Primary key `(generated_at, sponsor_id)`. Removed and merged sponsors are
+  landed like any other row. Nothing is flattened or coerced: JSON null stays JSON null.
+
+Only `ok` lands sponsor rows. A response is refused as a whole when `schemaVersion` is not
+1, when `count` differs from the number of rows, when a row has no string `id` or repeats
+one, or when the list is empty. There is no partial snapshot.
+
+**Snapshots and reruns.** The server stamps every response with a new `generatedAt`, so
+every accepted fetch is a full snapshot of the register (principle 6), including a second
+run on the same day. Landing the same response twice (same `generatedAt`) is a no-op.
+Downstream models pick the latest accepted snapshot per `run_date`, so same-day reruns
+give the same marts unless the register itself changed in between.
+
+Cost, measured on the first live snapshot (2026-10-07): 13,148 rows take 8.5 MB including
+indexes, so about 3 GB a year if every daily snapshot is kept. If that becomes a problem, the fix is a downstream model that
+keeps only changed rows, not a change to raw.
+
+## Secrets
+
+The pipeline holds one secret besides the database password: `IWWZ_API_KEY`.
+
+- It is read from the process environment only (`load_iwwz_settings` in `config.py`).
+  Unset or empty raises before any network or database work.
+- It lives in its own `IwwzSettings`, not in `Settings`, so board ingestion, migrations
+  and the tests never need it.
+- Committed files and the image contain the name only. Locally the value comes from the
+  gitignored `.env` or a shell export (the export wins). In production it comes from the
+  runner: a systemd `EnvironmentFile` outside the repo or the orchestrator's secret store.
+- It is never logged. The field is `repr=False`, error texts are scrubbed of the key before
+  they are stored, and a test fails if the key shows up in a log record, a result or an
+  error for any outcome.
+- `IWWZ_EXPORT_URL` must be https, so the key cannot be sent in clear text by a typo.
+
 ## Sources
 
 | Source | Status | Notes |
 |---|---|---|
 | Greenhouse | done | `?content=true`, 404 for unknown slugs |
-| iwwz sponsor export | contract fixed, key not issued | `GET /api/export/sponsors`, `X-Api-Key`, brotli, schemaVersion 1. Field list: iwwz repo `docs/ARCHITECTURE.md`, section "Sponsor export contract". |
+| iwwz sponsor export | done, first live snapshot 2026-10-07 | `GET /api/export/sponsors`, `X-Api-Key`, brotli, schemaVersion 1, 13,148 rows in one response (6.2 MB of JSON, 1.1 MB on the wire as brotli), 30 requests per key per hour. Field list: iwwz repo `docs/ARCHITECTURE.md`, section "Sponsor export contract". Seen in the live data: every row has `isIndRecognizedSponsor` true and a `kvkNumber`, `locations` is null for all rows, 172 rows are removed, 12 are merged, and 7 old rows with hex ids were never enriched. The test fixture is 7 rows cut from that export. |
 
 ## Seed list
 
@@ -111,3 +155,10 @@ locations anymore.
 | 2026-09-25 | Local DB host is 127.0.0.1, not localhost | On Windows, localhost resolves to ::1 first and Docker only listens on IPv4, so connects hung. Connections now also time out after 10 s. |
 | 2026-09-25 | Scheduler-agnostic CLI; Airflow optional | Host is undecided and the candidate box (2 vCPU, 3.7 GB, already running the API and Postgres) may not fit Airflow. Checkpoint 5 ships both a DAG and a cron entrypoint that call the same commands. |
 | 2026-09-25 | Seed is a dbt seed CSV that the CLI also reads | One list for ingestion and joins; dbt can test it. The CLI resolves it relative to the working directory, so deployments run from the repo root. |
+| 2026-10-05 | Sponsor export uses httpx with the brotli extra, no gzip fallback | The API negotiates brotli (5.1 MB becomes about 470 KB) and httpx advertises `br` only when it can decode it. The extra was already a dependency. A test decodes a brotli body, so removing the extra fails the suite. |
+| 2026-10-05 | 401 and 429 are never retried; connection errors and 5xx are, with backoff | A bad key stays bad, and retrying a rate limit of 30 per hour only uses more of it. |
+| 2026-10-05 | `IWWZ_API_KEY` is injected through the environment, never stored | See the Secrets section. `.env.example` lists the name with an empty value; the Makefile restores the caller's exported value, because make would otherwise let the empty line in `.env` override it. |
+| 2026-10-05 | The sponsor key has its own settings object | Requiring it in `Settings` would make migrations, board ingestion and the database tests fail or skip without a key they do not use. |
+| 2026-10-05 | Raw sponsor data is one row per sponsor per export, keyed `(generated_at, sponsor_id)`, plus one row per attempt | Mirrors what was sent, keeps every failure mode queryable, and makes each accepted fetch a dated snapshot. A newer `generatedAt` on the same day lands a new snapshot; the same one twice is a no-op. |
+| 2026-10-05 | Sponsor migration lives in `src/nl_jobs/migrations/`, not `sql/migrations/` | The task text named the old folder; migrations moved into the package on 2026-09-25. |
+| 2026-10-07 | The sponsor key may live in the local, gitignored `.env` | Simpler for local runs than exporting it in every shell. It still never goes into a committed file, and production still injects it. |

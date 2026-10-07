@@ -3,6 +3,7 @@
 python -m nl_jobs migrate
 python -m nl_jobs ingest greenhouse --run-date 2026-09-25   # every active board in the seed
 python -m nl_jobs ingest greenhouse catawiki                # only the named slugs
+python -m nl_jobs ingest-sponsors                           # needs IWWZ_API_KEY in the environment
 """
 
 import argparse
@@ -16,13 +17,14 @@ from pathlib import Path
 import httpx
 
 from nl_jobs import db
-from nl_jobs.config import load_settings
+from nl_jobs.config import load_iwwz_settings, load_settings
 from nl_jobs.fetch_result import FetchResult, Outcome
 from nl_jobs.http_client import make_client
-from nl_jobs.landing import insert_fetch
+from nl_jobs.landing import insert_fetch, insert_sponsor_export
 from nl_jobs.migrate import apply_migrations
 from nl_jobs.seed import active_slugs, load_companies
-from nl_jobs.sources import greenhouse
+from nl_jobs.sources import greenhouse, iwwz_sponsors
+from nl_jobs.sources.iwwz_sponsors import SponsorOutcome
 
 # Adding a source is one line here plus its module.
 SOURCES: dict[str, Callable[[httpx.Client, str], FetchResult]] = {
@@ -71,6 +73,28 @@ def ingest(source: str, slugs: list[str], run_date: date, seed_file: Path) -> in
     return 1 if failed else 0
 
 
+def ingest_sponsors(run_date: date) -> int:
+    # Loaded first so a missing key stops the run before any network or database work.
+    iwwz = load_iwwz_settings()
+    with make_client() as client, db.connect(load_settings()) as conn:
+        export = iwwz_sponsors.fetch_export(client, iwwz)
+        fetch_id = insert_sponsor_export(conn, export, run_date)
+    # Never log the settings object's key or the request headers, only what came back.
+    log.info(
+        "%s -> %s (http=%s, schema=%s, generated_at=%s, sponsors=%s, fetch_id=%d)%s",
+        iwwz_sponsors.SOURCE,
+        export.outcome,
+        export.http_status,
+        export.schema_version,
+        export.generated_at,
+        export.sponsor_count,
+        fetch_id,
+        f" error: {export.error}" if export.error else "",
+    )
+    # Anything but a full, valid export fails the run: there is no partial sponsor snapshot.
+    return 0 if export.outcome is SponsorOutcome.OK else 1
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="nl_jobs")
     commands = parser.add_subparsers(dest="command", required=True)
@@ -79,15 +103,21 @@ def main(argv: list[str] | None = None) -> int:
     ingest_cmd.add_argument("source", choices=sorted(SOURCES))
     ingest_cmd.add_argument("slugs", nargs="*", help="default: every active board in the seed")
     ingest_cmd.add_argument("--seed-file", type=Path, default=DEFAULT_SEED)
-    ingest_cmd.add_argument(
-        "--run-date",
-        type=date.fromisoformat,
-        default=datetime.now(UTC).date(),
-        help="logical date of the run, YYYY-MM-DD (default: today in UTC)",
+    sponsors_cmd = commands.add_parser(
+        "ingest-sponsors", help="fetch the iwwz sponsor export and land it in raw"
     )
+    for cmd in (ingest_cmd, sponsors_cmd):
+        cmd.add_argument(
+            "--run-date",
+            type=date.fromisoformat,
+            default=datetime.now(UTC).date(),
+            help="logical date of the run, YYYY-MM-DD (default: today in UTC)",
+        )
     args = parser.parse_args(argv)
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     if args.command == "migrate":
         return migrate()
+    if args.command == "ingest-sponsors":
+        return ingest_sponsors(args.run_date)
     return ingest(args.source, args.slugs, args.run_date, args.seed_file)

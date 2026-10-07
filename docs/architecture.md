@@ -119,7 +119,7 @@ it as a seed, so both sides use the same companies. Validation lives in
 |---|---|
 | `company_id` | Stable key used everywhere downstream. Never reuse or rename. |
 | `ats`, `ats_slug` | Which board to fetch. One row per board. |
-| `kvk_number` | Join key for the sponsor register. Blank means unknown (null), filled in by hand. Must stay text in dbt (`column_types`) or leading zeros are lost. |
+| `kvk_number` | Join key for the sponsor register. Blank means unknown (null), which is not the same as "not a sponsor". Filled on 2026-10-07 by matching names against the register; alternatives are in `notes`. Must stay text in dbt (`column_types`) or leading zeros are lost. |
 | `active` | `false` stops fetching without deleting the company, so its history stays joinable. |
 | `checked_on`, `notes` | When and how the board was last confirmed. |
 

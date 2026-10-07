@@ -80,7 +80,7 @@ In production the scheduler supplies it. The API allows 30 requests per key per 
 ## Known limitations
 
 - Only the 13 companies in `dbt/seeds/companies.csv` are collected, and only the 2 on Greenhouse are fetched so far.
-- `kvk_number` is empty for every company in the seed, so the sponsor join has nothing to match on yet.
+- Each seed company has one `kvk_number`, matched by name against the sponsor register. A company with several registered entities (Adyen, Mollie, Picnic, Effectory) is joined on one of them only. Channable was not found in the register, so its KvK is unknown.
 - Postings on job boards or career pages outside the six supported ATS platforms are not collected.
 
 Design and decisions: [docs/architecture.md](docs/architecture.md).

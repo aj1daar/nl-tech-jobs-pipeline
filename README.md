@@ -37,7 +37,7 @@ Raw tables are append-only: the database rejects updates and deletes. Running th
 |---|---|
 | Seed list (13 companies) | done |
 | Greenhouse ingestion | done, runs against the live API |
-| Sponsor export ingestion | built and tested offline; no successful live run yet (no API key on this machine) |
+| Sponsor export ingestion | done, runs against the live API (13,148 sponsors per snapshot) |
 | Lever, Ashby, Workable, Recruitee, SmartRecruiters | not built |
 | dbt models | not built |
 | Scheduling | not built |
@@ -67,18 +67,18 @@ select run_date, board_slug, outcome, job_count from raw.board_fetches order by 
 
 The IND register of recognised sponsors comes from the ik-wil-werk-zoeken API
 (`GET /api/export/sponsors`), not from this repo. It needs an API key, which is never
-written to a file here. For a one-off run, export it in your shell first:
+committed. Locally, either put it in your gitignored `.env` or export it in your shell
+(an exported value wins over `.env`):
 
 ```sh
 export IWWZ_API_KEY=...          # PowerShell: $env:IWWZ_API_KEY = '...'
 make sponsors
 ```
 
-Leave `IWWZ_API_KEY=` empty in `.env`. In production the scheduler supplies it.
+In production the scheduler supplies it. The API allows 30 requests per key per hour.
 
 ## Known limitations
 
-- The sponsor client has not completed a live run yet, and its recorded test fixture is still missing.
 - Only the 13 companies in `dbt/seeds/companies.csv` are collected, and only the 2 on Greenhouse are fetched so far.
 - `kvk_number` is empty for every company in the seed, so the sponsor join has nothing to match on yet.
 - Postings on job boards or career pages outside the six supported ATS platforms are not collected.

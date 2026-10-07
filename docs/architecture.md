@@ -81,8 +81,8 @@ run on the same day. Landing the same response twice (same `generatedAt`) is a n
 Downstream models pick the latest accepted snapshot per `run_date`, so same-day reruns
 give the same marts unless the register itself changed in between.
 
-Cost: about 12,800 rows per snapshot, a few MB a day, roughly 1 to 2 GB a year if every
-daily snapshot is kept. If that becomes a problem, the fix is a downstream model that
+Cost, measured on the first live snapshot (2026-10-07): 13,148 rows take 8.5 MB including
+indexes, so about 3 GB a year if every daily snapshot is kept. If that becomes a problem, the fix is a downstream model that
 keeps only changed rows, not a change to raw.
 
 ## Secrets
@@ -93,9 +93,9 @@ The pipeline holds one secret besides the database password: `IWWZ_API_KEY`.
   Unset or empty raises before any network or database work.
 - It lives in its own `IwwzSettings`, not in `Settings`, so board ingestion, migrations
   and the tests never need it.
-- The repo, `.env.example` and the image contain the name only. The value comes from the
-  runner: a shell export for a one-off run, a systemd `EnvironmentFile` outside the repo
-  or the orchestrator's secret store in production.
+- Committed files and the image contain the name only. Locally the value comes from the
+  gitignored `.env` or a shell export (the export wins). In production it comes from the
+  runner: a systemd `EnvironmentFile` outside the repo or the orchestrator's secret store.
 - It is never logged. The field is `repr=False`, error texts are scrubbed of the key before
   they are stored, and a test fails if the key shows up in a log record, a result or an
   error for any outcome.
@@ -106,7 +106,7 @@ The pipeline holds one secret besides the database password: `IWWZ_API_KEY`.
 | Source | Status | Notes |
 |---|---|---|
 | Greenhouse | done | `?content=true`, 404 for unknown slugs |
-| iwwz sponsor export | client done, not yet run against the live API | `GET /api/export/sponsors`, `X-Api-Key`, brotli, schemaVersion 1, about 12,800 rows in one response, 30 requests per key per hour. Field list: iwwz repo `docs/ARCHITECTURE.md`, section "Sponsor export contract". On 2026-10-05 the documented URL answered 404 for every path, and no recorded fixture exists yet. |
+| iwwz sponsor export | done, first live snapshot 2026-10-07 | `GET /api/export/sponsors`, `X-Api-Key`, brotli, schemaVersion 1, 13,148 rows in one response (6.2 MB of JSON, 1.1 MB on the wire as brotli), 30 requests per key per hour. Field list: iwwz repo `docs/ARCHITECTURE.md`, section "Sponsor export contract". Seen in the live data: every row has `isIndRecognizedSponsor` true and a `kvkNumber`, `locations` is null for all rows, 172 rows are removed, 12 are merged, and 7 old rows with hex ids were never enriched. The test fixture is 7 rows cut from that export. |
 
 ## Seed list
 
@@ -161,3 +161,4 @@ locations anymore.
 | 2026-10-05 | The sponsor key has its own settings object | Requiring it in `Settings` would make migrations, board ingestion and the database tests fail or skip without a key they do not use. |
 | 2026-10-05 | Raw sponsor data is one row per sponsor per export, keyed `(generated_at, sponsor_id)`, plus one row per attempt | Mirrors what was sent, keeps every failure mode queryable, and makes each accepted fetch a dated snapshot. A newer `generatedAt` on the same day lands a new snapshot; the same one twice is a no-op. |
 | 2026-10-05 | Sponsor migration lives in `src/nl_jobs/migrations/`, not `sql/migrations/` | The task text named the old folder; migrations moved into the package on 2026-09-25. |
+| 2026-10-07 | The sponsor key may live in the local, gitignored `.env` | Simpler for local runs than exporting it in every shell. It still never goes into a committed file, and production still injects it. |

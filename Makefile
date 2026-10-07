@@ -20,7 +20,7 @@ unexport IWWZ_CALLER_KEY IWWZ_CALLER_URL
 POSTGRES_USER ?= nl_jobs
 POSTGRES_DB ?= nl_jobs
 
-.PHONY: install up down psql migrate sponsors test lint fmt check db-reset
+.PHONY: install up down psql migrate ingest sponsors test lint fmt check db-reset
 
 install:
 	uv sync
@@ -36,6 +36,10 @@ psql:
 
 migrate:
 	uv run python -m nl_jobs migrate
+
+# Every active Greenhouse board in dbt/seeds/companies.csv.
+ingest:
+	uv run python -m nl_jobs ingest greenhouse
 
 # Needs IWWZ_API_KEY exported in the shell that runs make.
 sponsors:

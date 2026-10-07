@@ -1,0 +1,14 @@
+company_id,company_name,ats,ats_slug,kvk_number,active,checked_on,notes
+adyen,Adyen,greenhouse,adyen,,true,2026-09-25,211 postings at check
+bitvavo,Bitvavo,ashby,bitvavo,,true,2026-09-25,9 postings at check
+bunq,bunq,recruitee,bunq,,true,2026-09-25,10 postings at check
+catawiki,Catawiki,greenhouse,catawiki,,true,2026-09-25,47 postings at check
+channable,Channable,recruitee,channable,,true,2026-09-25,11 postings at check
+effectory,Effectory,recruitee,effectory,,true,2026-09-25,7 postings at check; also has an empty Workable account
+fastned,Fastned,recruitee,fastned,,true,2026-09-25,31 postings at check
+floryn,Floryn,recruitee,floryn,,true,2026-09-25,2 postings at check
+helloprint,Helloprint,recruitee,helloprint,,true,2026-09-25,5 postings at check
+mollie,Mollie,ashby,mollie,,true,2026-09-25,42 postings at check
+picnic,Picnic,smartrecruiters,picnic,,true,2026-09-25,2 postings at check; main careers site is elsewhere so this board is likely incomplete
+polarsteps,Polarsteps,ashby,polarsteps,,true,2026-09-25,3 postings at check
+vandebron,Vandebron,recruitee,vandebron,,true,2026-09-25,12 postings at check

@@ -1,14 +1,17 @@
 """Command line entrypoint. Airflow and cron both call these commands; nothing else runs the work.
 
 python -m nl_jobs migrate
-python -m nl_jobs ingest greenhouse catawiki bird --run-date 2026-09-25
+python -m nl_jobs ingest greenhouse --run-date 2026-09-25   # every active board in the seed
+python -m nl_jobs ingest greenhouse catawiki                # only the named slugs
 """
 
 import argparse
 import logging
+import os
 import time
 from collections.abc import Callable
 from datetime import UTC, date, datetime
+from pathlib import Path
 
 import httpx
 
@@ -18,6 +21,7 @@ from nl_jobs.fetch_result import FetchResult, Outcome
 from nl_jobs.http_client import make_client
 from nl_jobs.landing import insert_fetch
 from nl_jobs.migrate import apply_migrations
+from nl_jobs.seed import active_slugs, load_companies
 from nl_jobs.sources import greenhouse
 
 # Adding a source is one line here plus its module.
@@ -25,6 +29,8 @@ SOURCES: dict[str, Callable[[httpx.Client, str], FetchResult]] = {
     greenhouse.SOURCE: greenhouse.fetch_board,
 }
 SECONDS_BETWEEN_BOARDS = 1.0
+# Relative to the working directory: deployments run from the repo root, where dbt also lives.
+DEFAULT_SEED = Path(os.environ.get("NL_JOBS_SEED_FILE", "dbt/seeds/companies.csv"))
 
 log = logging.getLogger("nl_jobs")
 
@@ -36,8 +42,11 @@ def migrate() -> int:
     return 0
 
 
-def ingest(source: str, slugs: list[str], run_date: date) -> int:
+def ingest(source: str, slugs: list[str], run_date: date, seed_file: Path) -> int:
     fetch_board = SOURCES[source]
+    if not slugs:
+        slugs = active_slugs(load_companies(seed_file), source)
+        log.info("%d active %s board(s) in %s", len(slugs), source, seed_file)
     failed = 0
     with make_client() as client, db.connect(load_settings()) as conn:
         for i, slug in enumerate(slugs):
@@ -68,7 +77,8 @@ def main(argv: list[str] | None = None) -> int:
     commands.add_parser("migrate", help="apply pending SQL migrations")
     ingest_cmd = commands.add_parser("ingest", help="fetch boards and land raw JSON")
     ingest_cmd.add_argument("source", choices=sorted(SOURCES))
-    ingest_cmd.add_argument("slugs", nargs="+")
+    ingest_cmd.add_argument("slugs", nargs="*", help="default: every active board in the seed")
+    ingest_cmd.add_argument("--seed-file", type=Path, default=DEFAULT_SEED)
     ingest_cmd.add_argument(
         "--run-date",
         type=date.fromisoformat,
@@ -80,4 +90,4 @@ def main(argv: list[str] | None = None) -> int:
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     if args.command == "migrate":
         return migrate()
-    return ingest(args.source, args.slugs, args.run_date)
+    return ingest(args.source, args.slugs, args.run_date, args.seed_file)

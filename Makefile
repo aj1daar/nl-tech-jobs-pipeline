@@ -5,7 +5,7 @@ export
 POSTGRES_USER ?= nl_jobs
 POSTGRES_DB ?= nl_jobs
 
-.PHONY: install up down psql test lint fmt check db-reset
+.PHONY: install up down psql migrate test lint fmt check db-reset
 
 install:
 	uv sync
@@ -18,6 +18,9 @@ down:
 
 psql:
 	docker compose exec postgres psql -U $(POSTGRES_USER) -d $(POSTGRES_DB)
+
+migrate:
+	uv run python -m nl_jobs migrate
 
 test:
 	uv run pytest

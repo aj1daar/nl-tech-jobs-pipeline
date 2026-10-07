@@ -6,7 +6,10 @@ readme = "README.md"
 authors = [{ name = "Atai Nogoibaev" }]
 requires-python = ">=3.12,<3.13"
 # Runtime dependencies are added per checkpoint, each with a stated reason.
-dependencies = []
+dependencies = [
+    "httpx[brotli]>=0.28",
+    "psycopg[binary]>=3.2",
+]
 
 [dependency-groups]
 dev = [
@@ -37,6 +40,7 @@ select = [
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 addopts = ["-ra", "--strict-markers", "--import-mode=importlib"]
 markers = [
     "integration: needs a running Postgres (make up)",

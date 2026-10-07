@@ -16,7 +16,7 @@ class Settings:
 
 def load_settings() -> Settings:
     return Settings(
-        pg_host=os.environ.get("POSTGRES_HOST", "localhost"),
+        pg_host=os.environ.get("POSTGRES_HOST", "127.0.0.1"),
         pg_port=int(os.environ.get("POSTGRES_PORT", "5433")),
         pg_db=os.environ.get("POSTGRES_DB", "nl_jobs"),
         pg_user=os.environ.get("POSTGRES_USER", "nl_jobs"),

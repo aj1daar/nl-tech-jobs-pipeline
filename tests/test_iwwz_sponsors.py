@@ -237,20 +237,27 @@ def test_key_never_reaches_logs_results_or_errors(answers, caplog):
 
 
 def test_recorded_export_is_accepted():
-    if not RECORDED.exists():
-        pytest.skip(
-            f"{RECORDED.relative_to(FIXTURES.parent)} not recorded yet: "
-            "needs IWWZ_API_KEY and a live export"
-        )
+    # Seven rows cut from the live export on 2026-10-07; count was adjusted to match.
     client, _ = client_answering(httpx.Response(200, content=RECORDED.read_bytes()))
 
     export = fetch_export(client, SETTINGS, sleep=Sleeps())
 
     assert export.outcome is SponsorOutcome.OK
+    assert export.sponsor_count == len(export.sponsors) == 7
     kinds = {
         "removed": any(s["removedAt"] for s in export.sponsors),
         "merged": any(s["mergedIntoId"] for s in export.sponsors),
+        "merge target present": {s["mergedIntoId"] for s in export.sponsors if s["mergedIntoId"]}
+        <= {s["id"] for s in export.sponsors},
         "enriched": any(s["enrichedAt"] for s in export.sponsors),
-        "no kvk": any(s["kvkNumber"] is None for s in export.sponsors),
+        "never enriched": any(s["enrichedAt"] is None for s in export.sponsors),
+        "hex guid id": any(len(s["id"]) == 32 for s in export.sponsors),
     }
     assert all(kinds.values()), f"fixture lacks variety: {kinds}"
+
+
+def test_recorded_export_has_no_empty_strings_or_lists():
+    # The contract promises null for unknown. If this fails, the API changed, not us.
+    sponsors = json.loads(RECORDED.read_bytes())["sponsors"]
+
+    assert not [(s["id"], k) for s in sponsors for k, v in s.items() if v in ("", [])]
